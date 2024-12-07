@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Malware</title>
+</head>
+<body>
+    <h1>Edit Malware Details</h1>
+    <form action="/edit/{{ malware.id }}" method="POST">
+        <label for="name">Malware Name:</label><br>
+        <input type="text" id="name" name="name" value="{{ malware.name }}" required><br><br>
+        
+        <label for="attack_type">Type:</label><br>
+        <select id="attack_type" name="attack_type">
+            <option value="Virus" {% if malware.attack_type == 'Virus' %}selected{% endif %}>Virus</option>
+            <option value="Worm" {% if malware.attack_type == 'Worm' %}selected{% endif %}>Worm</option>
+            <option value="Trojan" {% if malware.attack_type == 'Trojan' %}selected{% endif %}>Trojan</option>
+            <option value="Ransomware" {% if malware.attack_type == 'Ransomware' %}selected{% endif %}>Ransomware</option>
+            <option value="Spyware" {% if malware.attack_type == 'Spyware' %}selected{% endif %}>Spyware</option>
+        </select><br><br>
+        
+        <label for="severity">Severity:</label><br>
+        <select id="severity" name="severity">
+            <option value="Low" {% if malware.severity == 'Low' %}selected{% endif %}>Low</option>
+            <option value="Medium" {% if malware.severity == 'Medium' %}selected{% endif %}>Medium</option>
+            <option value="High" {% if malware.severity == 'High' %}selected{% endif %}>High</option>
+            <option value="Critical" {% if malware.severity == 'Critical' %}selected{% endif %}>Critical</option>
+        </select><br><br>
+        
+        <button type="submit">Update</button>
+        <a href="/">Cancel</a>
+    </form>
+</body>
+</html>
